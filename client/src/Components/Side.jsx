@@ -4,9 +4,9 @@ import { LogOutIcon } from 'lucide-react'
 
 const Side = () => {
   return (
-    <div className='flex flex-col flex-wrap justify-between pb-10 text-white fixed w-60 inset-0 bg-gray-800 px-4 py-2'>
+    <div className='flex flex-col justify-between pb-10 text-white h-screen  w-40  md:w-60  bg-gray-800 px-4 py-2'>
         <div className='flex flex-col space-y-4'>
-        <p className='bg-gray-600 px-2 py-2 w-full rounded'>Samadoon_academy</p>
+        <div className='bg-gray-600 flex-wrap flex py-2 w-40 px-2 text-sm rounded'>Samadoon_academy</div>
         <Links/>
         </div>
         <button className='bg-red-100 font-bold text-black px-2 py-2 flex w-30 rounded'><LogOutIcon/> Logout</button>
