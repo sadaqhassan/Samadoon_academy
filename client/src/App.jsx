@@ -9,6 +9,8 @@ import Dashboard from './Pages/Dashboard'
 import { useSelector } from 'react-redux'
 import Attendence from './Pages/Attendence'
 import Nav from './Components/Nav'
+import Login from './Pages/Login'
+import About from './Components/About'
 
 function App() {
   const currentUser = useSelector((state)=>state?.user.currentUser)
@@ -22,6 +24,8 @@ function App() {
         <Route path='finance' element={<Fees/>}/>
         <Route path='attendence' element={<Attendence/>}/>
         </Route>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/about' element={<About/>}/>
       </Routes>
     </div>
   )
