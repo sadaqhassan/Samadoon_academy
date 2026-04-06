@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { getProfileApi, googleOauth, loginApi, logout, registerApi, updatePofileApi, uploadImageApi } from "../Controllers/user.controller.js";
-import { isAuthM } from "../MiddleWares/isAuth.js";
+import { loginApi, registerApi} from "../Controllers/user.controller.js";
+import { isAdminM } from "../MiddleWares/isAdmin.js";
 
 const user = Router()
 
-user.post("/register",registerApi)
+user.post("/registerTeacher",isAdminM,registerApi)
 user.post("/login",loginApi);
 // user.get("/user-data",isAuthM,getProfileApi);
 // user.get("/logout",logout);
