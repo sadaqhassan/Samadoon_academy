@@ -46,7 +46,7 @@ export const loginApi = async(req,res)=>{
     }
     try {
         const user = await theUser.findOne({email})
-        
+
         if(!user){
             return res.status(400).json({success:false,message:"incorrect email or password"})
         }
@@ -57,7 +57,7 @@ export const loginApi = async(req,res)=>{
             return res.status(400).json({success:false,message:"incorrect email or password"})
         }
 
-        const token = jwt.sign({id:user._id},process.env.JWT_SECRET, {expiresIn:"7d"})
+        const token = jwt.sign({id:user._id, role:user.role},process.env.JWT_SECRET, {expiresIn:"7d"})
 
         const {password:pass, ...rest} = user._doc
 
