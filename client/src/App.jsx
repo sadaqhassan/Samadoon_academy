@@ -11,11 +11,12 @@ import Attendence from './Pages/Attendence'
 import Nav from './Components/Nav'
 import Login from './Pages/Login'
 import About from './Components/About'
-
+import { Toaster } from 'react-hot-toast'
 function App() {
   const currentUser = useSelector((state)=>state?.user.currentUser)
   return (
     <div>
+      <Toaster/>
       <Routes>
         <Route  path='/' element={!currentUser || currentUser == null ? <Home/> : <Layout/>}>
         <Route path='dashboard' element={<Dashboard/>}/>
