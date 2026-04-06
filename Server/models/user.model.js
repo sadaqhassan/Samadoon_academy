@@ -20,7 +20,7 @@ const userModel = mongoose.Schema({
     role:{
         type:String,
         required:true,
-        enum:["admin,teacher"]
+        enum:["admin","teacher"]
     }
 },{timestamps:true})
 
