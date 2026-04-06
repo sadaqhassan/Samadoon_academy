@@ -1,8 +1,8 @@
 // Register
 
-import { theUser } from "../Model/user.model.js"
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import { theUser } from '../models/user.model.js';
 
 export const registerApi = async(req,res)=>{
 
@@ -41,7 +41,7 @@ export const loginApi = async(req,res)=>{
 
     const {email ,password} = req.body
 
-    if(!email || !password || !inviteToken){
+    if(!email || !password ){
         return res.status(400).json({success:false,message:"fill all fields"})
     }
     try {
@@ -61,11 +61,7 @@ export const loginApi = async(req,res)=>{
 
         const {password:pass, ...rest} = user._doc
 
-        return res.cookie("accessToken",token,{  httpOnly: true,
-  secure: false,
-  sameSite: "None",
-   maxAge: 7 * 24 * 60 * 60 * 1000
-}).status(200).json({success:true,userData:rest ,message:`Welcome back `})
+        return res.cookie("accessToken",token,{httpOnly: true,}).status(200).json({success:true,userData:rest ,message:`Welcome back `})
     } catch (error) {
         res.status(500).json({success:false,message:"server error"})
         console.log(error)
