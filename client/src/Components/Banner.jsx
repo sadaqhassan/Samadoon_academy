@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Banner = () => {
+  const {currentUser} = useSelector((state)=>state.user)
+  const navigate = useNavigate()
   return (
     <div>
       
@@ -12,7 +16,7 @@ const Banner = () => {
         <p className="text-gray-600 max-w-xl mx-auto mb-6">
           Maamul iskuulkaaga si fudud oo casri ah — arday, macalin, attendance iyo lacagaha oo dhan hal meel.
         </p>
-        <button className="bg-green-500 text-white px-6 py-3 rounded-xl shadow hover:bg-green-600">
+        <button onClick={()=>{currentUser ? navigate("/") : navigate("/login")}} className="bg-green-500 text-white px-6 py-3 rounded-xl shadow hover:bg-green-600">
           Get Started
         </button>
       </section>
