@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 import { MenuIcon } from 'lucide-react'
 
 const Layout = () => {
-  const [isOpen,setIsOpen] = useState(false)
+  const [isOpen,setIsOpen] = useState(true)
   return (
     <div className='flex space-x-5 items-start bg-cyan-50 max-w-full h-screen overflow-y-hidden'>
         {
