@@ -26,11 +26,14 @@ export const teacherRegister  = async (req,res) => {
     }
 }
 
+// http://localhost:2000/api/teacher/register/get
 
 export const teacherInfo = async (req,res) => {
+    const {userRole} = req
+
+    if(!userRole || userRole !== "admin") return res.status(400).json({success:false,message:"you can't get info"})
     try {
         const teachers  = await teacherModel.find();
-
         
         return res.status(200).json({success:true, data:teachers});
 
