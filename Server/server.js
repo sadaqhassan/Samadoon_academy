@@ -9,6 +9,7 @@ const app = express();
 configApp(app)
 
 app.use("/api/user",userRoute);
+app.use("/api/teacher",teacherRoute);
 
 
 await connectionDb();
