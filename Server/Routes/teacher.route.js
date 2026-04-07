@@ -5,6 +5,6 @@ import { isAdminM } from "../MiddleWares/isAdmin.js";
 const teacher = Router();
 
 teacher.post("/register",teacherRegister);
-teacher.get("/register/get",isAdminM,teacherInfo);
+teacher.get("/get",isAdminM,teacherInfo);
 
 export const teacherRoute = teacher;
