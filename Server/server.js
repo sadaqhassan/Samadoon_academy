@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import { theUser } from './models/user.model.js';
 import { userRoute } from './Routes/user.route.js';
 import connectionDb from './utils/conn.js';
+import { teacherRoute } from './Routes/teacher.route.js';
 const app = express();
 
 configApp(app)
