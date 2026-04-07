@@ -25,3 +25,17 @@ export const teacherRegister  = async (req,res) => {
         console.log(error);
     }
 }
+
+
+export const teacherInfo = async (req,res) => {
+    try {
+        const teachers  = await teacherModel.find();
+
+        
+        return res.status(200).json({success:true, data:teachers});
+
+    } catch (error) {
+        res.status(500).json({Success:false,message:"server errror"})
+        console.log(error);
+    }
+}
