@@ -19,7 +19,7 @@ function App() {
       <Toaster/>
       <Routes>
         <Route  path='/' element={!currentUser || currentUser == null ? <Home/> : <Layout/>}>
-        <Route path='dashboard' element={<Dashboard/>}/>
+        <Route index element={<Dashboard/>}/>
         <Route path='teachers' element={<Teachers/>}/>
         <Route path='students' element={<Students/>}/>
         <Route path='finance' element={<Fees/>}/>
