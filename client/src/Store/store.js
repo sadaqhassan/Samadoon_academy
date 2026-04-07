@@ -3,6 +3,7 @@ import { persistStore , persistReducer } from 'redux-persist'
 import storage from  "redux-persist/lib/storage"
 
 import userReducer from './userSlice';
+import teacherReducer from './TeacherSlice';
 
 const persistConfig = {
     key:"root",
@@ -10,7 +11,8 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-    user:userReducer
+    user:userReducer,
+    teachers:teacherReducer
 })
 
 const persistedReducer = persistReducer(persistConfig,rootReducer);
