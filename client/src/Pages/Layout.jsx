@@ -10,8 +10,8 @@ const Layout = () => {
         {
           isOpen && <Side/>
         }  
-        <button className={`${!isOpen && "ml-8"}  mt-5`} onClick={()=>setIsOpen(!isOpen)}><MenuIcon/></button>
-        <div className='mt-4 ml-5 flex-wrap max-w-full h-screen overflow-y-scroll'>
+        <button className={`${!isOpen && "ml-6"}  mt-5`} onClick={()=>setIsOpen(!isOpen)}><MenuIcon/></button>
+        <div className='mt-4 ml-2 flex-wrap max-w-full h-screen overflow-y-scroll'>
           <Outlet/>
         </div>
     </div>
