@@ -42,3 +42,18 @@ export const teacherInfo = async (req,res) => {
         console.log(error);
     }
 }
+
+// deleteTecher
+
+export const deleteTecherApi = async (req,res) => {
+    const userId = req.userId
+    const id = req.params;
+    if(!userId) return res.status(403).json({success:false,message:"you can't delete"})
+    try {
+        const teacher = await teacherModel.findByIdAndDelete(id);
+        return res.status(200).json({success:true,message:"teacher deleted"});
+    } catch (error) {
+        res.status(500).json({Success:false,message:"server errror"})
+        console.log(error);
+    }
+}
