@@ -9,7 +9,7 @@ export const isAdminM = async (req,res,next) => {
     
     if(!isVerified) return res.status(403).jspn({success:false,message:"You are not authorized"});
 
-    req.userRole = "admin",
+    req.userRole = isVerified.role;
 
     next()
 
