@@ -6,6 +6,6 @@ const teacher = Router();
 
 teacher.post("/register",isAdminM,teacherRegister);
 teacher.get("/get",isAdminM,teacherInfo);
-teacher.get("/get",isAdminM,deleteTecherApi);
+teacher.delete("/delete/:id",isAdminM,deleteTecherApi);
 
 export const teacherRoute = teacher;
