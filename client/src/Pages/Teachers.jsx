@@ -4,31 +4,30 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTeachersData ,deleteTeacher} from '../Store/TeacherSlice';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Teachers() {
   const {teachers} = useSelector((state)=>state.teachers);
   const [searched,setSearched] = useState([]);
   const dispatch = useDispatch()
   const getData = async () => {
+    
     const res = await  fetch("http://localhost:2000/api/teacher/get",{
       method:"GET",
       credentials:"include"
     });
     const data = await res.json();
-
     if(!data.success){
       toast.error(data.message);
     }
-
+    toast.success("fetched")
     dispatch(getTeachersData(data.data));
-    toast.success(data.message);
-
     console.log(data)
   }
 
   useEffect(()=>{
     getData()
-  },[])
+  },[]);
 
   const [searchQuery,setSearchQuery] = useState("");
 
@@ -60,6 +59,7 @@ function Teachers() {
     }
   }
 
+  const navigate = useNavigate()
 
   return (
     <div className="mt-10 bg-white p-4 sm:p-6 rounded-2xl shadow-md">
@@ -75,7 +75,7 @@ function Teachers() {
         onChange={(e)=>setSearchQuery(e.target.value)}
         className="border px-3 py-1 rounded-lg outline-none text-sm w-full sm:w-auto"
       />
-      <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap">
+      <button onClick={()=>navigate("/register-teacher")} className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap">
         + Add
       </button>
     </div>
