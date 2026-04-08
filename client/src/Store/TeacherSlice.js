@@ -13,7 +13,7 @@ const teacherSlice = createSlice({
             state.teachers = action.payload;
         },
         deleteTeacher: (state,action)=>{
-            let prev = state.teachers.filter((teach)=>teach.id !== action.payload);
+            let prev = state.teachers.filter((teach)=>teach._id !== action.payload);
             state.teachers = prev
         }
     }
