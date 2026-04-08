@@ -33,12 +33,13 @@ function Teachers() {
   const [searchQuery,setSearchQuery] = useState("");
 
   useEffect(()=>{
-    if(searchQuery){
-      const findTeacher = teachers.find((teacher)=>teacher.teachers_name.toLowerCase().startsWith(searchQuery.toLowerCase()));
-      setSearched(findTeacher);
-    }
-  },[searchQuery]);
-
+    if(searchQuery.length > 0){
+      setSearched(teachers.filter((teacher)=>teacher.teachers_name.toLowerCase().startsWith(searchQuery.toLowerCase()))
+    )
+  }else{
+    setSearched(teachers);
+  }
+},[searchQuery,teachers]);
   
   return (
     <div className="mt-10 bg-white p-4 sm:p-6 rounded-2xl shadow-md">
@@ -129,58 +130,7 @@ function Teachers() {
               </td>
             </tr>
           ))
-        :
-        teachers && teachers.length > 0 ? (
-          teachers.map((item) => (
-            <tr
-              key={item._id}
-              className="block sm:table-row border sm:border-0 mb-4 sm:mb-0 rounded-xl sm:rounded-none p-3 sm:p-0 shadow sm:shadow-none"
-            >
-              
-              {/* ID */}
-              <td className="px-2 py-2 sm:px-4 sm:py-3 flex justify-between sm:table-cell">
-                <span className="sm:hidden font-medium">Id</span>
-                {item.id}
-              </td>
-
-              {/* Name */}
-              <td className="px-2 py-2 sm:px-4 sm:py-3 flex justify-between sm:table-cell">
-                <span className="sm:hidden font-medium">Name</span>
-                {item.teachers_name}
-              </td>
-
-              {/* Email */}
-              <td className="px-2 py-2 sm:px-4 sm:py-3 flex justify-between sm:table-cell">
-                <span className="sm:hidden font-medium">Email</span>
-                {item.teachers_email}
-              </td>
-
-              {/* Phone */}
-              <td className="px-2 py-2 sm:px-4 sm:py-3 flex justify-between sm:table-cell">
-                <span className="sm:hidden font-medium">Phone</span>
-                {item.phone_number}
-              </td>
-
-              {/* Status */}
-              <td className="px-2 py-2 sm:px-4 sm:py-3 flex justify-between sm:table-cell">
-                <span className="sm:hidden font-medium">Status</span>
-                <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs">
-                  Active
-                </span>
-              </td>
-
-              {/* Actions */}
-              <td className="px-2 py-2 sm:px-4 sm:py-3 flex justify-between sm:table-cell">
-                <span className="sm:hidden font-medium">Actions</span>
-
-                <div className="flex gap-3">
-                  <button className="text-blue-600 text-sm">Update</button>
-                  <button className="text-red-500 text-sm">Delete</button>
-                </div>
-              </td>
-            </tr>
-          ))
-        ) : (
+        : (
           <tr>
             <td colSpan="6" className="text-center py-5 text-gray-500">
               No data available
