@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTeachersData } from '../Store/TeacherSlice';
+import { getTeachersData ,deleteTeacher} from '../Store/TeacherSlice';
 import { useState } from 'react';
 
 function Teachers() {
@@ -40,7 +40,27 @@ function Teachers() {
     setSearched(teachers);
   }
 },[searchQuery,teachers]);
-  
+  //delete teacher
+
+  const handleDelete = async(id)=>{
+    try {
+      const res = await fetch(`http://localhost:2000/api/teacher/delete/${id}`,{
+        method:"DELETE",
+        credentials:"include"
+      });
+      const data = await res.json();
+      if(!data.success){
+        return toast.error(data.message);
+      }
+      dispatch(deleteTeacher(id));
+      toast.success(data.message)
+    } catch (error) {
+      toast.error(error.message);
+      console.log(error)
+    }
+  }
+
+
   return (
     <div className="mt-10 bg-white p-4 sm:p-6 rounded-2xl shadow-md">
   
@@ -125,7 +145,7 @@ function Teachers() {
 
                 <div className="flex gap-3">
                   <button className="text-blue-600 text-sm">Update</button>
-                  <button className="text-red-500 text-sm">Delete</button>
+                  <button className="text-red-500 text-sm" onClick={()=>handleDelete(item._id)}>Delete</button>
                 </div>
               </td>
             </tr>
