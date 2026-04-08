@@ -12,6 +12,7 @@ import Nav from './Components/Nav'
 import Login from './Pages/Login'
 import About from './Components/About'
 import { Toaster } from 'react-hot-toast'
+import RegisterModel from './Pages/RegisterModel'
 function App() {
   const currentUser = useSelector((state)=>state?.user.currentUser)
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='students' element={<Students/>}/>
         <Route path='finance' element={<Fees/>}/>
         <Route path='attendence' element={<Attendence/>}/>
+        <Route path='register-teacher' element={<RegisterModel/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>
         <Route path='/about' element={<About/>}/>
