@@ -26,34 +26,34 @@ export const studentRegister  = async (req,res) => {
     }
 }
 
-// http://localhost:2000/api/=student/register/get
+// // http://localhost:2000/api/student/register/get
 
-export const studentInfo = async (req,res) => {
-    const {userRole} = req
+// export const studentInfo = async (req,res) => {
+//     const {userRole} = req
 
-    if(!userRole || userRole !== "admin") return res.status(400).json({success:false,message:"you can't get info"})
-    try {
-        const student  = await studentModel.find();
+//     if(!userRole || userRole !== "admin") return res.status(400).json({success:false,message:"you can't get info"})
+//     try {
+//         const student  = await studentModel.find();
         
-        return res.status(200).json({success:true, data:student});
+//         return res.status(200).json({success:true, data:student});
 
-    } catch (error) {
-        res.status(500).json({Success:false,message:"server errror"})
-        console.log(error);
-    }
-}
+//     } catch (error) {
+//         res.status(500).json({Success:false,message:"server errror"})
+//         console.log(error);
+//     }
+// }
 
-// deleteStudent
+// // deleteStudent
 
-export const deleteStudentApi = async (req,res) => {
-    const userRole = req.userRole
-    if(userRole !== "admin") return res.status(403).json({success:false,message:"only admins can delete"})
-    const id = req.params.id;
-    try {
-        await studentModel.findByIdAndDelete(id);
-        return res.status(200).json({success:true,message:"=student deleted"});
-    } catch (error) {
-        res.status(500).json({Success:false,message:"server errror"})
-        console.log(error);
-    }
-}
+// export const deleteStudentApi = async (req,res) => {
+//     const userRole = req.userRole
+//     if(userRole !== "admin") return res.status(403).json({success:false,message:"only admins can delete"})
+//     const id = req.params.id;
+//     try {
+//         await studentModel.findByIdAndDelete(id);
+//         return res.status(200).json({success:true,message:"=student deleted"});
+//     } catch (error) {
+//         res.status(500).json({Success:false,message:"server errror"})
+//         console.log(error);
+//     }
+// }
