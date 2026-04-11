@@ -10,18 +10,16 @@ export const studentRegister  = async (req,res) => {
             return res.status(400).json({success:false,message:"student is exist"});
         };
 
-        const count = await studentModel.countDocuments();
         
         await studentModel.create({
             phone_number,
             Grade,
             name,
-            studentId:count+1
         });
 
         return res.status(200).json({success:true,message:"student Register successFully"});
     } catch (error) {
-        res.status(500).json({Success:false,message:error})
+        res.status(500).json({success:false,message:error})
         console.log(error);
     }
 }
