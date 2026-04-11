@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const studentSchema = new mongoose.schema({
+const studentSchema = new mongoose.Schema({
     
-    studentID:{
+    studentId:{
         type:Number,
         unique:true
     },
