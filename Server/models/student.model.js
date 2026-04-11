@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema({
-    
-    studentId:{
-        type:Number,
-        unique:true
-    },
     name:{
         type:String,
         required:true,
@@ -16,8 +11,10 @@ const studentSchema = new mongoose.Schema({
     },
     phone_number:{
         type:Number,
-        unique:true
+        unique:true,
+        sparse: true
+
     }
-},{timeStamps:true})
+},{timestamps:true})
 
 export const studentModel = mongoose.model("students",studentSchema)
