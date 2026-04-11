@@ -5,12 +5,14 @@ import { theUser } from './models/user.model.js';
 import { userRoute } from './Routes/user.route.js';
 import connectionDb from './utils/conn.js';
 import { teacherRoute } from './Routes/teacher.route.js';
+import { studentRoute } from './Routes/student.route.js';
 const app = express();
 
 configApp(app)
 
 app.use("/api/user",userRoute);
 app.use("/api/teacher",teacherRoute);
+app.use("/api/student",studentRoute);
 
 
 await connectionDb();
