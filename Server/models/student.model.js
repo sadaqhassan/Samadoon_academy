@@ -1,9 +1,17 @@
 import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema({
+    studentId:{
+        type:Number,
+        required:true,
+        unique:true,
+        sparse: true
+        
+    },
     name:{
         type:String,
         required:true,
+        
     },
     Grade:{
         type:String,
